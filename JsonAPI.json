@@ -1,0 +1,11 @@
+{
+    "id": "1",
+    "title": "Title",
+    "description": "Description",
+    "genre": "Genre",
+    "platform": "Platform",
+    "price": 29.99,
+    "release_date": "YYYY-MM-DD",
+    "developer": "Developer",
+    "publisher": "Publisher"
+}

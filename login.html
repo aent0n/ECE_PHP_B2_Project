@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Login | Ludiflex</title>
+</head>
+<body>
+    <!-- Boîte de connexion -->
+    <form action="login.php" method="post" class="login-box" id="login-form">
+        <!-- En-tête de connexion -->
+        <div class="login-header">
+            <header>Login</header>
+        </div>
+        <!-- Champ d'entrée pour l'e-mail -->
+        <div class="input-box">
+            <input type="text" class="input-field" placeholder="Email" id="email" autocomplete="off" name="email" required>
+        </div>
+        <!-- Champ d'entrée pour le mot de passe -->
+        <div class="input-box">
+            <input type="password" class="input-field" placeholder="Password" name="password" id="password" autocomplete="off" required>
+        </div>
+        <!-- Options "Remember me" et "Forgot password" -->
+        <div class="forgot">
+            <section>
+                <input type="checkbox" id="check" checked>
+                <label for="check">Remember me</label>
+            </section>
+            <section>
+                <a href="#">Forgot password</a>
+            </section>
+        </div>
+        <!-- Bouton de soumission du formulaire -->
+        <div class="input-submit">
+            <button class="submit-btn" type="submit" id="submit" style="color:white">Sign In</button>
+        </div>
+        <!-- Lien vers la page d'inscription -->
+        <div class="sign-up-link">
+            <p>Don't have an account? <a href="nowlogin.html">Sign Up</a></p>
+        </div>
+    </form>
+
+    <!-- Script JavaScript pour la gestion de "Remember me" -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const rememberMeCheckbox = document.getElementById('check');
+
+            // Vérifiez si des informations d'identification sont stockées dans les cookies
+            const storedEmail = getCookie('rememberedEmail');
+            const storedPassword = getCookie('rememberedPassword');
+
+            if (storedEmail && storedPassword) {
+                emailInput.value = storedEmail;
+                passwordInput.value = storedPassword;
+            }
+
+            // Fonctions pour manipuler les cookies
+            function setCookie(name, value, days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                const expires = 'expires=' + date.toUTCString();
+                document.cookie = name + '=' + value + ';' + expires + ';path=/';
+            }
+
+            function getCookie(name) {
+                const cname = name + '=';
+                const decodedCookie = decodeURIComponent(document.cookie);
+                const ca = decodedCookie.split(';');
+                for (let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) === ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(cname) === 0) {
+                        return c.substring(cname.length, c.length);
+                    }
+                }
+                return '';
+            }
+
+            // Ajoutez un écouteur d'événements pour le changement de "Remember me" checkbox
+            rememberMeCheckbox.addEventListener('change', function () {
+                if (!this.checked) {
+                    deleteCookie('rememberedEmail');
+                    deleteCookie('rememberedPassword');
+                }
+            });
+
+            // Fonction pour supprimer un cookie
+            function deleteCookie(name) {
+                document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            }
+        });
+    </script>
+</body>
+</html>
