@@ -1,61 +1,3 @@
-<?php
-
-// Function to handle status update
-function updateStatus($status) {
-    // Code to update status in the database
-
-	// Database connection
-	$servername = "localhost";
-	$username = "root";
-	$password_db = "";
-	$dbname = "db";
-	$port = 3306;
-	$conn = new mysqli($servername, $username, $password_db, $dbname, $port);
-	$sql = "UPDATE commentaire SET Statut = '" . $status . "' WHERE id_commentaire = " . $_POST['id'];	$result = $conn->query($sql);
-	if ($result === TRUE) {
-		echo "Record updated successfully";
-	} else {
-		echo "Error updating record: " . $conn->error;
-	}
-	$conn->close();
-}
-
-// Function to handle click on Completed span
-function clickCompleted() {
-    updateStatus("Completed");
-
-
-}
-
-// Function to handle click on Process span
-function clickProcess() {
-    updateStatus("Process");
-}
-
-// Function to handle click on No span
-function clickNo() {
-    updateStatus("No");
-	
-}
-
-// Call the respective functions based on span click
-if (isset($_POST['action'])) {
-    $action = $_POST['action'];
-    switch ($action) {
-        case 'completed':
-            clickCompleted();
-            break;
-        case 'process':
-            clickProcess();
-            break;
-        case 'no':
-            clickNo();
-            break;
-        default:
-            echo "Invalid action";
-    }
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -94,7 +36,7 @@ if (isset($_POST['action'])) {
 		</ul>
 		<ul class="side-menu">
 			<li>
-				<a href="settings_inter.html">
+				<a href="settings.html">
 					<i class='bx bxs-cog' ></i>
 					<span class="text">Paramètres</span>
 				</a>
@@ -143,6 +85,10 @@ if (isset($_POST['action'])) {
 					<ul class="breadcrumb">
 						<li>
 							<a href="#">Tableau de commande</a>
+						</li>
+						<li><i class='bx bx-chevron-right' ></i></li>
+						<li>
+							<a class="active" href="#">Menu</a>
 						</li>
 					</ul>
 			</div>

@@ -33,7 +33,7 @@ if ($user_client && password_verify($password, $user_client['mot_de_passe'])) {
     $_SESSION['user_id'] = $user_client['id_Client'];
 
     // Redirect to client.html
-    header('Location: /client.php');
+    header('Location: /ECEPRO2/client.php');
     exit;
 } 
 
@@ -52,7 +52,7 @@ if ($user_admin && $password == $user_admin['paseword']) {
     $_SESSION['admin_id'] = $user_admin['id_Admin'];
 
     // Redirect to admin.html
-    header('Location: /admin.php');
+    header('Location: /ECEPRO2/admin.php');
     exit;
 
 } 
@@ -72,7 +72,7 @@ if ($user_standardist && $password == $user_standardist['PASSWORD']) {
     $_SESSION['standardist_id'] = $user_standardist['id_standardiste'];
 
     // Redirect to standardist.html
-    header('Location: /stand.php');
+    header('Location: /ECEPRO2/stand.php');
     exit;
 } 
 
@@ -85,13 +85,13 @@ $result_intervenant = $stmt_intervenant->get_result();
 $user_intervenant = $result_intervenant->fetch_assoc();
 
 // Check if the user exists in the intervenant table and the password is correct
-if ($user_intervenant && password_verify($password, $user_intervenant['password'])) {
+if ($user_intervenant && $password == $user_intervenant['PASSWORD']) {
     // Start the session and store the user's ID in it
     session_start();
     $_SESSION['intervenant_id'] = $user_intervenant['id_Intervenant'];
 
     // Redirect to intervenant.html
-    header('Location: /intervenant.html');
+    header('Location: /ECEPRO2/inter.php');
     exit;
 } 
 

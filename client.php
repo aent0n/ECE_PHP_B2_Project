@@ -18,17 +18,17 @@
             <i class='bx bxs-smile'></i>
             <span class="text">Clients</span>
         </a>
-        <ul class="side-menu top">
-            <li>
+        <ul class="side-menu">
+            <li class="active">
                 <a href="#">
                     <i class='bx bxs-message-dots'></i>
                     <span class="text">Messages</span>
                 </a>
             </li>
         </ul>
-        <ul class="side-menu">
+        <ul class="side-menu" >
             <li>
-                <a href="settings.html">
+                <a href="" style="cursor: not-allowed;" >
                     <i class='bx bxs-cog'></i>
                     <span class="text">Paramètres</span>
                 </a>
@@ -71,10 +71,10 @@
         <main>
             <div class="head-title">
                 <div class="left">
-                    <h1>Tableau de bord</h1>
+                    <h1>Messages</h1>
                     <ul class="breadcrumb">
                         <li>
-                            <a href="#">Tableau de bord</a>
+                            <a href="#">Messages</a>
                         </li>
                         <li><i class='bx bx-chevron-right'></i></li>
                         <li>
@@ -98,8 +98,8 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>User</th>
-                                <th>Status</th>
+                                <th>Utilisateur</th>
+                                <th>Statut</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -170,7 +170,7 @@
             <div class="messaging" id="messagingSection">
                 <input type="text" id="messageInput" placeholder="Tapez votre message...">
                 <button onclick="envoyerMessage()">Envoyer</button> 
-                <div id="messageContainer"></div>
+                <div style="color: white;" id="messageContainer"></div>
             </div>
             <!-- Fin de la section de messagerie -->
         </main>

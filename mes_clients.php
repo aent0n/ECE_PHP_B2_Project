@@ -21,14 +21,14 @@
 			<span class="text">Standardiste</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="active">
-				<a href="">
+			<li>
+				<a href="stand.php">
 					<i class='bx bxs-dashboard' ></i>
 					<span class="text">Tableau de commande</span>
 				</a>
 			</li>
-		<li>
-			<a href="mes_clients.php">
+		<li class="active">
+			<a href="#">
 				<i class='bx bxs-shopping-bag-alt'></i>
 				<span class="text">Mes clients</span>
 			</a>
@@ -58,17 +58,19 @@
 				$table .= "<table>";
 				$table .= "<thead>";
 				$table .= "<tr>";
-				$table .= "<th>User</th>";
-				$table .= "<th>Date Order</th>";
+				$table .= "<th>Utilisateur</th>";
+				$table .= "<th>Date de commande</th>";
 				$table .= "<th>Statut</th>";
 				$table .= "</tr>";
 				$table .= "</thead>";
-				$table .= "<tbody>";
+				$table .= "<tbody style='display:flex-col; align-items: center; margin-bottom: 10px; background-color: #f0f0f0; justify-content: center;'>";
 				while ($row = $result->fetch_assoc()) {
 					$table .= "<tr>";
 					$table .= "<td>";
-					$table .= "<img src='img/people.jpg'>";
-					$table .= "<p>" . $row["nom_Client"] . " " . $row["prénom_Client"] . "</p>";
+					$table .= "<div style='display: flex; align-items: center; margin-bottom: 10px;'>";
+					$table .= "<img src='img/people.jpg' style='width: 80px; height: 80px; border-radius: 50%; margin-right: 10px;'>";
+					$table .= "<p style='font-size: 16px;'>" . $row["nom_Client"] . " " . $row["prénom_Client"] . "</p>";
+					$table .= "</div>";
 					$table .= "</td>";
 					$table .= "<td>01-10-2021</td>"; // Remplacez cette valeur par la date de commande réelle
 
@@ -143,13 +145,13 @@
 		<!-- NAVBAR -->
 
 		<!-- MAIN -->
-		<main>
-			<div class="head-title">
+        <main>
+		<div class="head-title">
 				<div class="left">
-					<h1>Tableau de commande</h1>
+					<h1>Mes Clients</h1>
 					<ul class="breadcrumb">
 						<li>
-							<a href="#">Tableau de commande</a>
+							<a href="#">Mes Clients</a>
 						</li>
 						<li><i class='bx bx-chevron-right' ></i></li>
 						<li>
@@ -162,100 +164,19 @@
 					<span class="text">Download PDF</span>
 				</a>
 			</div>
-
-			<!-- Section de réception des messages -->
-			<div class="messages" id="messageSection">
-				<h3 style="color: white;" >Messages Reçus</h3>
-				<div id="receivedMessages"></div>
-			</div>
-			<!-- Fin de la section de réception des messages -->
-			
 			<div class="table-data">
     <div class="todo">
         <div class="head">
-            <h3>Todos</h3>
+            <h3>Liste</h3>
             <i class='bx bx-plus' ></i>
             <i class='bx bx-filter' ></i>
         </div>
         <ul class="todo-list">
-		<?php
-			// Connexion à la base de données (à remplir avec vos informations de connexion)
-			$servername = "localhost";
-			$username = "root";
-			$password = "";
-			$dbname = "db";
-			$conn = new mysqli($servername, $username, $password, $dbname);
-			// Vérifier la connexion
-			if ($conn->connect_error) {
-				die("Connection failed: " . $conn->connect_error);
-			}
-
-			// Requête SQL pour récupérer les commentaires avec le nom et prénom de l'utilisateur
-			$sql = "SELECT commentaire.id_Commentaire, commentaire.description_Commentaire, client.nom_Client, client.prénom_Client FROM commentaire INNER JOIN client ON commentaire.id_Client = client.id_Client";
-			$result = $conn->query($sql);
-
-			if ($result->num_rows > 0) {
-				// Afficher chaque commentaire dans la liste de tâches
-				while($row = $result->fetch_assoc()) {
-					echo "<li>";
-					echo "<p>" . $row["description_Commentaire"] . " - " . $row["nom_Client"] . " " . $row["prénom_Client"] . "</p>";
-					echo "<form action='lier_intervenant.php' method='post'>";
-					echo "<input type='hidden' name='id_commentaire' value='" . $row["id_Commentaire"] . "'>";
-					echo "<select name='id_intervenant'>";
-					// Récupérer les intervenants depuis la base de données
-					$sql_intervenants = "SELECT * FROM intervenant";
-					$result_intervenants = $conn->query($sql_intervenants);
-					while($row_intervenant = $result_intervenants->fetch_assoc()) {
-						echo "<option value='" . $row_intervenant["id_Intervenant"] . "'>" . $row_intervenant["prénom_Intervenant"] . " " . $row_intervenant["nom_Intervenant"] . "</option>";
-					}
-					echo "</select>";
-					echo "<input type='submit' value='Associer Intervenant'>";
-					echo "</form>";
-					echo "<i class='bx bx-dots-vertical-rounded'></i>";
-					echo "</li>";
-				}
-			} else {
-				echo "<li>No comments found.</li>";
-			}
-			// Fermer la connexion à la base de données
-			$conn->close();
-			?>
-
-
-        </ul>
-    </div>
-</div>
-
-				</div>
-			</div>
-		</main>
-		<!-- MAIN -->
+            <?php echo $table; ?>
 	</section>
 	<!-- CONTENT -->
 	
-    <script src="message.js"></script>
+
 	<script src="admin.js"></script>
-	<script> 
-		// Fonction pour afficher/cacher la section de réception des messages
-		function toggleMessaging() {
-			var messageSection = document.getElementById("messageSection");
-			messageSection.classList.toggle("active");
-			receiveMessages(); // Appeler la fonction de réception des messages lors de l'activation
-		}
-
-		// Fonction pour recevoir et afficher les messages
-		function receiveMessages() {
-			var receivedMessagesContainer = document.getElementById("receivedMessages");
-
-			// Récupérer les messages stockés localement
-			var messages = JSON.parse(localStorage.getItem("messages")) || [];
-
-			// Afficher les messages dans la page
-			receivedMessagesContainer.innerHTML = "";
-			for (var i = 0; i < messages.length; i++) {
-				receivedMessagesContainer.innerHTML += "<p>" + messages[i] + "</p>";
-			}
-		}
-	</script>
 </body>
 </html>

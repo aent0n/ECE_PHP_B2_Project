@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // User already exists, redirect to the account creation failed page
             echo "<script>
                 setTimeout(function() {
-                    window.location.href = '/login.html';
+                    window.location.href = '/ECEPRO2/login.html';
                 }, 2000);  // 2000 milliseconds = 2 seconds
             </script>";
             echo "User with this email already exists. You will be redirected in 5 seconds.";

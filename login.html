@@ -5,40 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="login.css">
-    <title>Login | Ludiflex</title>
+    <title>Se connecter</title>
 </head>
 <body>
     <!-- Boîte de connexion -->
     <form action="login.php" method="post" class="login-box" id="login-form">
         <!-- En-tête de connexion -->
         <div class="login-header">
-            <header>Login</header>
+            <header>Se connecter</header>
         </div>
         <!-- Champ d'entrée pour l'e-mail -->
         <div class="input-box">
-            <input type="text" class="input-field" placeholder="Email" id="email" autocomplete="off" name="email" required>
+            <input type="text" class="input-field" placeholder="E-mail" id="email" autocomplete="off" name="email" required>
         </div>
         <!-- Champ d'entrée pour le mot de passe -->
         <div class="input-box">
-            <input type="password" class="input-field" placeholder="Password" name="password" id="password" autocomplete="off" required>
+            <input type="password" class="input-field" placeholder="Mot de passe" name="password" id="password" autocomplete="off" required>
         </div>
         <!-- Options "Remember me" et "Forgot password" -->
         <div class="forgot">
             <section>
-                <input type="checkbox" id="check" checked>
-                <label for="check">Remember me</label>
+                <input type="checkbox" id="remember-me" checked>
+                <label for="remember-me">Se souvenir de moi</label>
             </section>
             <section>
-                <a href="#">Forgot password</a>
+                <a href="#">Mot de passe oublié ?</a>
             </section>
         </div>
         <!-- Bouton de soumission du formulaire -->
         <div class="input-submit">
-            <button class="submit-btn" type="submit" id="submit" style="color:white">Sign In</button>
+            <button class="submit-btn" type="submit" id="submit" style="color:white">Se connecter</button>
         </div>
         <!-- Lien vers la page d'inscription -->
         <div class="sign-up-link">
-            <p>Don't have an account? <a href="nowlogin.html">Sign Up</a></p>
+            <p>Vous n'avez pas de compte ? <a href="nowlogin.html">Créer un compte</a></p>
         </div>
     </form>
 
@@ -47,7 +47,7 @@
         document.addEventListener('DOMContentLoaded', function () {
             const emailInput = document.getElementById('email');
             const passwordInput = document.getElementById('password');
-            const rememberMeCheckbox = document.getElementById('check');
+            const rememberMeCheckbox = document.getElementById('remember-me');
 
             // Vérifiez si des informations d'identification sont stockées dans les cookies
             const storedEmail = getCookie('rememberedEmail');

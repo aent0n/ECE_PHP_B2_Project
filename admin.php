@@ -24,7 +24,7 @@
             <li class="active">
                 <a href="#">
                     <i class='bx bxs-dashboard' ></i>
-                    <span class="text">Dashboard</span>
+                    <span class="text">Tableau de commande</span>
                 </a>
             </li>
             <li>
@@ -36,7 +36,7 @@
             <li>
                 <a href="analytics.html">
                     <i class='bx bxs-doughnut-chart' ></i>
-                    <span class="text">Analytics</span>
+                    <span class="text">Statistiques</span>
                 </a>
             </li>
             <li>
@@ -48,7 +48,7 @@
             <li>
                 <a href="teams.html">
                     <i class='bx bxs-group' ></i>
-                    <span class="text">Teams</span></a>
+                    <span class="text">Équipes</span></a>
                 </a>
             </li>
         </ul>
@@ -56,13 +56,13 @@
             <li>
                 <a href="settings.html">
                     <i class='bx bxs-cog' ></i>
-                    <span class="text">Settings</span>
+                    <span class="text">Paramètres</span>
                 </a>
             </li>
             <li>
                 <a href="login.html" class="logout">
                     <i class='bx bxs-log-out-circle' ></i>
-                    <span class="text">Logout</span>
+                    <span class="text">Se déconnecter</span>
                 </a>
             </li>
         </ul>
@@ -76,7 +76,7 @@
         <!-- NAVBAR -->
         <nav>
             <i class='bx bx-menu' ></i>
-            <a href="#" class="nav-link">Categories</a>
+            <a href="#" class="nav-link">Catégories</a>
             <form action="#">
                 <div class="form-input">
                     <input type="search" placeholder="Search...">
@@ -90,7 +90,7 @@
                 <span class="num">8</span>
             </a>
             <a href="#" class="profile">
-                <img src="img/people.jpg">
+                <img src="img/people1.jpg">
             </a>
         </nav>
         <!-- NAVBAR -->
@@ -99,14 +99,14 @@
         <main>
             <div class="head-title">
                 <div class="left">
-                    <h1>Dashboard</h1>
+                    <h1>Tableau de commande</h1>
                     <ul class="breadcrumb">
                         <li>
-                            <a href="admin.php">Dashboard</a>
+                            <a href="admin.php">Tableau de commande</a>
                         </li>
                         <li><i class='bx bx-chevron-right' ></i></li>
                         <li>
-                            <a class="active" href="#">Home</a>
+                            <a class="active" href="#">Menu</a>
                         </li>
                     </ul>
                 </div>
@@ -218,7 +218,7 @@
             <div class="table-data">
                 <div class="order">
                     <div class="head">
-                        <h3>Recent Orders</h3>
+                        <h3>Commandes Récentes</h3>
                         <i class='bx bx-search' ></i>
                         <i class='bx bx-filter' ></i>
                     </div>

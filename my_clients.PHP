@@ -18,13 +18,13 @@
 <section id="sidebar">
     <a href="#" class="brand">
         <i class='bx bxs-smile'></i>
-        <span class="text">Mes Clients</span>
+        <span class="text">Admin</span>
     </a>
     <ul class="side-menu top">
         <li class="">
             <a href="admin.php">
                 <i class='bx bxs-dashboard' ></i>
-                <span class="text">Dashboard</span>
+                <span class="text">Tableau de commande</span>
             </a>
         </li>
         <li class="active">
@@ -36,7 +36,7 @@
         <li>
             <a href="analytics.html">
                 <i class='bx bxs-doughnut-chart' ></i>
-                <span class="text">Analytics</span>
+                <span class="text">Statistiques</span>
             </a>
         </li>
         <li>
@@ -48,7 +48,7 @@
         <li>
             <a  href="teams.html">
                 <i class='bx bxs-group' ></i>
-                <span class="text">Team</span>
+                <span class="text">Équipe</span>
             </a>
         </li>
     </ul>
@@ -56,13 +56,13 @@
         <li>
             <a href="settings.html">
                 <i class='bx bxs-cog' ></i>
-                <span class="text">Settings</span>
+                <span class="text">Paramètres</span>
             </a>
         </li>
         <li>
             <a href="login.html" class="logout">
                 <i class='bx bxs-log-out-circle' ></i>
-                <span class="text">Logout</span>
+                <span class="text">Se déconnecter</span>
             </a>
         </li>
     </ul>
@@ -99,7 +99,7 @@
                 <h1>Mes Clients</h1>
                 <ul class="breadcrumb">
                     <li>
-                        <a claSS="active" href="admin.php">Dashboard</a>
+                        <a claSS="active" href="admin.php">Tableau de commande</a>
                     </li>
                     <li><i class='bx bx-chevron-right' ></i></li>
                     <li>
@@ -112,20 +112,11 @@
         <div class="table-data">
             <div class="order">
                 <div class="head">
-                    <h3>Recent Orders</h3>
+                    <h3>Commandes Récentes</h3>
                     <i class='bx bx-search' ></i>
                     <i class='bx bx-filter' ></i>
                 </div>
                 <table>
-                    <thead>
-                        <tr>
-                            <th>User</th>
-                            <th>Date Order</th>
-                            <th>Statut</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
                     <?php
                     // Connexion à la base de données
                     $servername = "localhost";
@@ -148,8 +139,8 @@
                         echo "<table>";
                         echo "<thead>";
                         echo "<tr>";
-                        echo "<th>User</th>";
-                        echo "<th>Date Order</th>";
+                        echo "<th>Utilisateur</th>";
+                        echo "<th>Date de commande</th>";
                         echo "<th>Statut</th>";
                         echo "<th>Action</th>";
                         echo "</tr>";
